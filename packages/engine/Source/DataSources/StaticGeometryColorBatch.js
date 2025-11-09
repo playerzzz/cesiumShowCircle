@@ -89,17 +89,17 @@ Batch.prototype.add = function (updater, instance) {
   ) {
     this.updatersWithAttributes.set(id, updater);
   } else {
-    const that = this;
-    this.subscriptions.set(
-      id,
-      updater.entity.definitionChanged.addEventListener(
-        function (entity, propertyName, newValue, oldValue) {
-          if (propertyName === "isShowing") {
-            that.showsUpdated.set(updater.id, updater);
-          }
-        },
-      ),
-    );
+    // const that = this;
+    // this.subscriptions.set(
+    //   id,
+    //   updater.entity.definitionChanged.addEventListener(
+    //     function (entity, propertyName, newValue, oldValue) {
+    //       if (propertyName === "isShowing") {
+    //         that.showsUpdated.set(updater.id, updater);
+    //       }
+    //     },
+    //   ),
+    // );
   }
 };
 
@@ -130,29 +130,29 @@ Batch.prototype.update = function (time) {
     const geometries = this.geometry.values;
     const geometriesLength = geometries.length;
     if (geometriesLength > 0) {
-      if (defined(primitive)) {
-        if (!defined(this.oldPrimitive)) {
-          this.oldPrimitive = primitive;
-        } else {
-          primitives.remove(primitive);
-        }
-      }
+      // if (defined(primitive)) {
+      //   if (!defined(this.oldPrimitive)) {
+      //     this.oldPrimitive = primitive;
+      //   } else {
+      //     primitives.remove(primitive);
+      //   }
+      // }
 
       let depthFailAppearance;
-      if (defined(this.depthFailAppearanceType)) {
-        if (defined(this.depthFailMaterialProperty)) {
-          this.depthFailMaterial = MaterialProperty.getValue(
-            time,
-            this.depthFailMaterialProperty,
-            this.depthFailMaterial,
-          );
-        }
-        depthFailAppearance = new this.depthFailAppearanceType({
-          material: this.depthFailMaterial,
-          translucent: this.translucent,
-          closed: this.closed,
-        });
-      }
+      // if (defined(this.depthFailAppearanceType)) {
+      //   if (defined(this.depthFailMaterialProperty)) {
+      //     this.depthFailMaterial = MaterialProperty.getValue(
+      //       time,
+      //       this.depthFailMaterialProperty,
+      //       this.depthFailMaterial,
+      //     );
+      //   }
+      //   depthFailAppearance = new this.depthFailAppearanceType({
+      //     material: this.depthFailMaterial,
+      //     translucent: this.translucent,
+      //     closed: this.closed,
+      //   });
+      // }
 
       primitive = new Primitive({
         show: false,
