@@ -1077,7 +1077,7 @@ Globe.prototype.render = function (frameState) {
     this._material.update(frameState.context);
   }
 
-  this._surface.render(frameState);
+  this._surface.render(frameState); // 和地球表面的瓦片渲染有关
 };
 
 /**
